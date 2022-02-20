@@ -37,7 +37,8 @@ export const styles = {
     cursor: 'pointer',
     fontSize: '18px',
     fontWeight: '700',
-    color: '#002f5b'
+    color: '#002f5b',
+    textDecoration: 'underline'
   },
   usedWords: {
     color: '#fff',

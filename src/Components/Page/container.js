@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { PageUI } from './ui';
 import { alphabet } from '../../Constants/alphabet';
 import { checkForWords, validateWord } from '../../Utils/words';
+import { wordsToUse } from '../../Constants/wordsToUse';
 
 export const Page = () => {
   const [currentWord, setCurrentWord] = useState('');
-  const [usedLetters, setUsedLetters] = useState(['C', 'E', 'L', 'R', 'Y']);
-  const [usedWords, setUsedWords] = useState(['CELERY']);
+  const [usedLetters, setUsedLetters] = useState([]);
+  const [usedWords, setUsedWords] = useState([]);
   const [rulesOpen, setRulesOpen] = useState(false);
   const [valid, setValid] = useState(false);
   const [finished, setFinished] = useState(false);
@@ -15,6 +16,7 @@ export const Page = () => {
   const [newlyUsedLetters, setNewlyUsedLetters] = useState(null);
   const windowWidth = window.innerWidth;
   const mobile = windowWidth < 500;
+  const startDate = new Date('2/20/22').setHours(0, 0, 0, 0);
 
   useEffect(() => {
     if (finished === false && localStorage.finished === 'true') {
@@ -22,6 +24,15 @@ export const Page = () => {
       setTimeTaken(localStorage.time);
       setUsedLetters(Array(parseInt(localStorage.score)).fill('A'));
       setUsedWords(localStorage.words.split(','));
+    }
+  });
+
+  useEffect(() => {
+    if (usedWords.length === 0) {
+      const days = (new Date().setHours(0, 0, 0, 0) - startDate) / (1000 * 60 * 60 * 24);
+      const wordToUse = wordsToUse[days];
+      setUsedWords([wordToUse]);
+      setUsedLetters([...new Set(wordToUse.split(''))]);
     }
   });
 
