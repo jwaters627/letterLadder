@@ -1,3 +1,4 @@
+import React from 'react';
 import { Alphabet, RulesModal, CompleteModal } from '../';
 import { styles } from './styles';
 
@@ -20,12 +21,15 @@ export const PageUI = ({
   return (
     <div style={mobile ? styles.mobilePage : styles.page}>
       <div style={styles.header}>
-        <button style={styles.rulesButton} onClick={() => setRulesOpen(true)}>
-          RULES
-        </button>
-        <button style={styles.rulesButton} onClick={finishGame}>
-          GIVE UP
-        </button>
+        <p style={styles.letterLadder}>LETTER LADDER</p>
+        <div style={styles.headerButtons}>
+          <button style={styles.rulesButton} onClick={() => setRulesOpen(true)}>
+            RULES
+          </button>
+          <button style={styles.rulesButton} onClick={finishGame}>
+            GIVE UP
+          </button>
+        </div>
       </div>
       <Alphabet newlyUsedLetters={newlyUsedLetters} usedLetters={usedLetters} mobile={mobile} />
       <div style={styles.inputContainer}>
@@ -49,7 +53,7 @@ export const PageUI = ({
 
       {usedWords.map((word, index) => {
         return (
-          <div key={word}>
+          <div style={styles.wordsContainer} key={word}>
             <p
               style={
                 index === 0 ? styles.lastWord : mobile ? styles.mobileUsedWords : styles.usedWords

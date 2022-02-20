@@ -1,3 +1,4 @@
+import React from 'react';
 import { styles } from './styles';
 
 export const CompleteModalUI = ({ mobile, usedLetters, usedWords, timeTaken }) => {

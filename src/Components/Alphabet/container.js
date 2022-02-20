@@ -1,3 +1,4 @@
+import React from 'react';
 import { AlphabetUI } from './ui';
 
 export const Alphabet = ({ usedLetters, mobile, newlyUsedLetters }) => {

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PageUI } from './ui';
 import { alphabet } from '../../Constants/alphabet';
 import { checkForWords, validateWord } from '../../Utils/words';

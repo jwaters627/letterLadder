@@ -1,3 +1,4 @@
+import React from 'react';
 import { alphabet } from '../../Constants/alphabet';
 import { styles } from './styles';
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import { CompleteModalUI } from './ui';
 
 export const CompleteModal = ({ timeTaken, usedLetters, usedWords, mobile }) => {

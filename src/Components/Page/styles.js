@@ -14,10 +14,19 @@ export const styles = {
   },
   header: {
     backgroundColor: '#fff',
-    width: '100%',
-    paddingTop: '12px',
-    paddingBottom: '12px',
-    marginBottom: '18px'
+    paddingLeft: '18px',
+    paddingRight: '18px',
+    marginBottom: '18px',
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
+  wordsContainer: {
+    display: 'flex',
+    justifyContent: 'center'
+  },
+  letterLadder: { fontSize: '18px', fontWeight: '700', color: '#002f5b' },
+  headerButtons: {
+    display: 'flex'
   },
   rulesButton: {
     background: 'none',
@@ -29,9 +38,16 @@ export const styles = {
   },
   usedWords: {
     color: '#fff',
-    fontSize: '14px'
+    fontSize: '14px',
+    marginBottom: '4px',
+    marginTop: '4px'
   },
-  mobileUsedWords: { color: '#fff', fontSize: '12px', marginTop: '4px' },
+  mobileUsedWords: {
+    color: '#fff',
+    fontSize: '12px',
+    marginTop: '4px',
+    marginBottom: '4px'
+  },
   lastWord: {
     color: '#fff',
     fontWeight: 700,
