@@ -41,5 +41,15 @@ export const styles = {
     top: '8px',
     right: '8px',
     cursor: 'pointer'
+  },
+  closeButtonMobile: {
+    background: 'none',
+    border: 'none',
+    fontWeight: 700,
+    fontSize: '18px',
+    position: 'absolute',
+    top: '18px',
+    right: '24px',
+    cursor: 'pointer'
   }
 };

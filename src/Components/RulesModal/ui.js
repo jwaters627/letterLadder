@@ -5,7 +5,9 @@ export const RulesModalUI = ({ setRulesOpen, mobile }) => {
   return (
     <div style={styles.fullPage}>
       <div style={mobile ? styles.mobileModalContainer : styles.modalContainer}>
-        <button style={styles.closeButton} onClick={() => setRulesOpen(false)}>
+        <button
+          style={mobile ? styles.closedButtonMobile : styles.closeButton}
+          onClick={() => setRulesOpen(false)}>
           x
         </button>
         <ul style={styles.list}>
