@@ -5,7 +5,8 @@ export const styles = {
     height: '100vh',
     top: '0',
     left: '0',
-    backgroundColor: `rgba(0,0,0,0.7)`
+    backgroundColor: `rgba(0,0,0,0.7)`,
+    zIndex: '9999999'
   },
   modalContainer: {
     backgroundColor: '#fff',
@@ -25,7 +26,11 @@ export const styles = {
     paddingTop: '24px'
   },
   list: {
-    textAlign: 'left'
+    textAlign: 'left',
+    marginTop: '48px',
+    wordWrap: 'break-word',
+    paddingLeft: '18px',
+    paddingRight: '18px'
   },
   closeButton: {
     background: 'none',

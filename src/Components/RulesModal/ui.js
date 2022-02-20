@@ -18,13 +18,16 @@ export const RulesModalUI = ({ setRulesOpen, mobile }) => {
             <p>You do not need to use all the letters from the previous word</p>
           </li>
           <li>
+            <p>Once you drop a letter it is gone</p>
+          </li>
+          <li>
             <p>Words must be at least 3 letters long</p>
           </li>
           <li>
             <p>Try to eliminate all letters of the alphabet</p>
           </li>
           <li>
-            <p>Your score will be the number of letters you have been able to use</p>
+            <p>Your score will be the number of letters you have been able to use (max being 26)</p>
           </li>
         </ul>
       </div>

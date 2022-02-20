@@ -12,14 +12,6 @@ export const styles = {
     height: '24px',
     outline: 'none'
   },
-  overlay: {
-    position: 'fixed',
-    width: '80%',
-    height: ' 80%',
-    backgroundColor: '#ccc',
-    top: '40px',
-    left: '10%'
-  },
   header: {
     backgroundColor: '#fff',
     width: '100%',
@@ -31,16 +23,21 @@ export const styles = {
     background: 'none',
     border: 'none',
     cursor: 'pointer',
-    fontSize: '18px'
+    fontSize: '18px',
+    fontWeight: '700',
+    color: '#002f5b'
   },
   usedWords: {
     color: '#fff',
     fontSize: '14px'
   },
+  mobileUsedWords: { color: '#fff', fontSize: '12px', marginTop: '4px' },
   lastWord: {
     color: '#fff',
     fontWeight: 700,
-    fontSize: '24px'
+    fontSize: '32px',
+    marginTop: 0,
+    marginBottom: '8px'
   },
   addButton: {
     borderRadius: '0',
@@ -65,22 +62,12 @@ export const styles = {
     justifyContent: 'center',
     marginTop: '12px'
   },
-  ladderSection: {
-    display: 'flex'
-  },
   score: {
     color: '#fff',
     flexGrow: 1,
     alignItems: 'start',
     textAlign: 'left',
-    paddingLeft: '18px'
-  },
-  wordContainer: {
-    flexGrow: 1,
-    textAlign: 'left',
-    display: 'block'
-  },
-  placeholder: {
-    flexGrow: 1
+    paddingLeft: '18px',
+    marginBottom: 0
   }
 };

@@ -7,6 +7,7 @@ export const AlphabetUI = ({ usedLetters, mobile, newlyUsedLetters }) => {
       {alphabet.map((letter) => {
         return !usedLetters.includes(letter) ? (
           <p
+            key={letter}
             style={
               (newlyUsedLetters || []).includes(letter) && mobile
                 ? styles.redLetterMobile
@@ -19,7 +20,9 @@ export const AlphabetUI = ({ usedLetters, mobile, newlyUsedLetters }) => {
             {letter}
           </p>
         ) : (
-          <p style={mobile ? styles.mobileUsedLetters : styles.usedLetters}>{letter}</p>
+          <p key={letter} style={mobile ? styles.mobileUsedLetters : styles.usedLetters}>
+            {letter}
+          </p>
         );
       })}
     </div>

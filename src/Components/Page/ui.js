@@ -1,5 +1,4 @@
-import { Alphabet } from '../';
-import { RulesModal } from '../';
+import { Alphabet, RulesModal, CompleteModal } from '../';
 import { styles } from './styles';
 
 export const PageUI = ({
@@ -46,29 +45,29 @@ export const PageUI = ({
           ADD WORD
         </button>
       </div>
-      <div style={styles.ladderSection}>
-        <p style={styles.score}>{`LEVEL: ${usedLetters.length}`}</p>
-        <div style={styles.wordContainer}>
-          {usedWords.map((word, index) => {
-            return (
-              <div key={word}>
-                <p style={index === 0 ? styles.lastWord : styles.usedWords} key={word}>
-                  {word.toUpperCase()}
-                </p>
-              </div>
-            );
-          })}
-        </div>
-        <div style={styles.placeholder}></div>
-      </div>
+      <p style={styles.score}>{`LEVEL: ${usedLetters.length}`}</p>
+
+      {usedWords.map((word, index) => {
+        return (
+          <div key={word}>
+            <p
+              style={
+                index === 0 ? styles.lastWord : mobile ? styles.mobileUsedWords : styles.usedWords
+              }
+              key={word}>
+              {word.toUpperCase()}
+            </p>
+          </div>
+        );
+      })}
+
       {finished && (
-        <div style={styles.overlay}>
-          <p>SCORE: {usedLetters.length}</p>
-          <p>TIME TAKEN: {timeTaken}</p>
-          {usedWords.map((word) => {
-            return <p key={word}>{word}</p>;
-          })}
-        </div>
+        <CompleteModal
+          usedLetters={usedLetters}
+          usedWords={usedWords}
+          timeTaken={timeTaken}
+          mobile={mobile}
+        />
       )}
       {rulesOpen && <RulesModal mobile={mobile} setRulesOpen={setRulesOpen} />}
     </div>
