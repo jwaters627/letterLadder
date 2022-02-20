@@ -15,8 +15,9 @@ export const Page = () => {
   const [timeTaken, setTimeTaken] = useState(null);
   const [newlyUsedLetters, setNewlyUsedLetters] = useState(null);
   const windowWidth = window.innerWidth;
+  const screenWidth = screen.width;
   console.log(windowWidth);
-  const mobile = windowWidth < 500;
+  const mobile = windowWidth < 500 || screenWidth < 500;
   const startDate = new Date('2/20/22').setHours(0, 0, 0, 0);
 
   useEffect(() => {
