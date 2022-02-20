@@ -16,7 +16,7 @@ export const Page = () => {
   const [newlyUsedLetters, setNewlyUsedLetters] = useState(null);
   const windowWidth = window.innerWidth;
   const screenWidth = screen.width;
-  const mobile = windowWidth < 500 || screenWidth < 500;
+  const notMobile = windowWidth > 500 || screenWidth < 500;
   const startDate = new Date('2/20/22').setHours(0, 0, 0, 0);
 
   useEffect(() => {
@@ -114,7 +114,7 @@ export const Page = () => {
       handleWordChange={handleWordChange}
       rulesOpen={rulesOpen}
       setRulesOpen={setRulesOpen}
-      mobile={mobile}
+      notMobile={notMobile}
       timeTaken={timeTaken}
       newlyUsedLetters={newlyUsedLetters}
       finishGame={finishGame}

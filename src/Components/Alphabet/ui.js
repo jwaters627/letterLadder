@@ -2,7 +2,7 @@ import React from 'react';
 import { alphabet } from '../../Constants/alphabet';
 import { styles } from './styles';
 
-export const AlphabetUI = ({ usedLetters, mobile, newlyUsedLetters }) => {
+export const AlphabetUI = ({ usedLetters, notMobile, newlyUsedLetters }) => {
   return (
     <div style={styles.container}>
       {alphabet.map((letter) => {
@@ -10,18 +10,18 @@ export const AlphabetUI = ({ usedLetters, mobile, newlyUsedLetters }) => {
           <p
             key={letter}
             style={
-              (newlyUsedLetters || []).includes(letter) && mobile
-                ? styles.redLetterMobile
-                : mobile
-                ? styles.mobileLetters
-                : (newlyUsedLetters || []).includes(letter)
+              (newlyUsedLetters || []).includes(letter) && notMobile
                 ? styles.redLetter
-                : styles.letters
+                : notMobile
+                ? styles.letters
+                : (newlyUsedLetters || []).includes(letter)
+                ? styles.redLetterMobile
+                : styles.mobileLetters
             }>
             {letter}
           </p>
         ) : (
-          <p key={letter} style={mobile ? styles.mobileUsedLetters : styles.usedLetters}>
+          <p key={letter} style={notMobile ? styles.usedLetters : styles.mobileUsedLetters}>
             {letter}
           </p>
         );

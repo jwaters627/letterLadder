@@ -1,10 +1,10 @@
 import React from 'react';
 import { styles } from './styles';
 
-export const CompleteModalUI = ({ mobile, usedLetters, usedWords, timeTaken }) => {
+export const CompleteModalUI = ({ notMobile, usedLetters, usedWords, timeTaken }) => {
   return (
     <div style={styles.fullPage}>
-      <div style={mobile ? styles.mobileModalContainer : styles.modalContainer}>
+      <div style={notMobile ? styles.modalContainer : styles.mobileModalContainer}>
         <p style={styles.score}>LEVEL: {usedLetters.length}</p>
         <p style={styles.time}>TIME TAKEN: {timeTaken}</p>
         {usedWords.map((word) => {

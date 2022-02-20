@@ -1,12 +1,12 @@
 import React from 'react';
 import { styles } from './styles';
 
-export const RulesModalUI = ({ setRulesOpen, mobile }) => {
+export const RulesModalUI = ({ setRulesOpen, notMobile }) => {
   return (
     <div style={styles.fullPage}>
-      <div style={mobile ? styles.mobileModalContainer : styles.modalContainer}>
+      <div style={notMobile ? styles.modalContainer : styles.mobileModalContainer}>
         <button
-          style={mobile ? styles.closeButtonMobile : styles.closeButton}
+          style={notMobile ? styles.closeButton : styles.closeButtonMobile}
           onClick={() => setRulesOpen(false)}>
           x
         </button>

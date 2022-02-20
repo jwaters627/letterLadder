@@ -13,13 +13,13 @@ export const PageUI = ({
   finished,
   rulesOpen,
   setRulesOpen,
-  mobile,
+  notMobile,
   timeTaken,
   newlyUsedLetters,
   finishGame
 }) => {
   return (
-    <div style={mobile ? styles.mobilePage : styles.page}>
+    <div style={notMobile ? styles.page : styles.mobilePage}>
       <div style={styles.header}>
         <p style={styles.letterLadder}>LETTER LADDER</p>
         <div style={styles.headerButtons}>
@@ -31,7 +31,11 @@ export const PageUI = ({
           </button>
         </div>
       </div>
-      <Alphabet newlyUsedLetters={newlyUsedLetters} usedLetters={usedLetters} mobile={mobile} />
+      <Alphabet
+        newlyUsedLetters={newlyUsedLetters}
+        usedLetters={usedLetters}
+        notMobile={notMobile}
+      />
       <div style={styles.inputContainer}>
         <input
           style={styles.input}
@@ -56,7 +60,11 @@ export const PageUI = ({
           <div style={styles.wordsContainer} key={word}>
             <p
               style={
-                index === 0 ? styles.lastWord : mobile ? styles.mobileUsedWords : styles.usedWords
+                index === 0
+                  ? styles.lastWord
+                  : notMobile
+                  ? styles.usedWords
+                  : styles.mobileUsedWords
               }
               key={word}>
               {word.toUpperCase()}
@@ -70,10 +78,10 @@ export const PageUI = ({
           usedLetters={usedLetters}
           usedWords={usedWords}
           timeTaken={timeTaken}
-          mobile={mobile}
+          notMobile={notMobile}
         />
       )}
-      {rulesOpen && <RulesModal mobile={mobile} setRulesOpen={setRulesOpen} />}
+      {rulesOpen && <RulesModal notMobile={notMobile} setRulesOpen={setRulesOpen} />}
     </div>
   );
 };
