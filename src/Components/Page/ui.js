@@ -21,12 +21,16 @@ export const PageUI = ({
   return (
     <div style={notMobile ? styles.page : styles.mobilePage}>
       <div style={styles.header}>
-        <p style={styles.letterLadder}>LETTER LADDER</p>
+        <p style={notMobile ? styles.letterLadder : styles.mobileLetterLadder}>LETTER LADDER</p>
         <div style={styles.headerButtons}>
-          <button style={styles.rulesButton} onClick={() => setRulesOpen(true)}>
+          <button
+            style={notMobile ? styles.rulesButton : styles.mobileRulesButton}
+            onClick={() => setRulesOpen(true)}>
             RULES
           </button>
-          <button style={styles.rulesButton} onClick={finishGame}>
+          <button
+            style={notMobile ? styles.rulesButton : styles.mobileRulesButton}
+            onClick={finishGame}>
             GIVE UP
           </button>
         </div>

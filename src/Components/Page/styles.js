@@ -28,6 +28,7 @@ export const styles = {
     justifyContent: 'center'
   },
   letterLadder: { fontSize: '18px', fontWeight: '700', color: '#002f5b' },
+  mobileLetterLadder: { fontSize: '12px', fontWeight: '700', color: '#002f5b' },
   headerButtons: {
     display: 'flex'
   },
@@ -36,6 +37,15 @@ export const styles = {
     border: 'none',
     cursor: 'pointer',
     fontSize: '18px',
+    fontWeight: '700',
+    color: '#002f5b',
+    textDecoration: 'underline'
+  },
+  mobileRulesButton: {
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    fontSize: '12px',
     fontWeight: '700',
     color: '#002f5b',
     textDecoration: 'underline'
