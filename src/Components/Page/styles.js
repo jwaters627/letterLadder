@@ -1,4 +1,7 @@
 export const styles = {
+  body: {
+    fontFamily: 'Helvetica'
+  },
   page: {
     width: '60%',
     marginLeft: '20%',

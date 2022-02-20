@@ -3,7 +3,7 @@ import { Page } from './Components';
 
 function App() {
   return (
-    <div className="App">
+    <div style={{ fontFamily: 'Helvetica' }} className="App">
       <Page />
     </div>
   );
