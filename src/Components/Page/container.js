@@ -16,7 +16,6 @@ export const Page = () => {
   const [newlyUsedLetters, setNewlyUsedLetters] = useState(null);
   const windowWidth = window.innerWidth;
   const screenWidth = screen.width;
-  console.log(screenWidth);
   const mobile = windowWidth < 500 || screenWidth < 500;
   const startDate = new Date('2/20/22').setHours(0, 0, 0, 0);
 
