@@ -9,7 +9,7 @@ export const styles = {
     height: '100vh',
     verticalAlign: 'center'
   },
-  mobilePage: { width: '100%', backgroundColor: '#002f5b', height: '100vh', marginLeft: '0' },
+  mobilePage: { width: '100vw', backgroundColor: '#002f5b', height: '100vh', marginLeft: '0' },
   input: {
     fontSize: '18px',
     height: '24px',
