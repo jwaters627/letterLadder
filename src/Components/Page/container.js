@@ -23,7 +23,7 @@ export const Page = () => {
 
   useEffect(() => {
     if (
-      finished &&
+      localStorage.finished === 'true' &&
       localStorage.completedDate &&
       `${new Date().setHours(0, 0, 0, 0)}` !== `${localStorage.completedDate}`
     ) {
@@ -33,16 +33,19 @@ export const Page = () => {
       localStorage['time'] = null;
       localStorage['words'] = null;
       localStorage['completedDate'] = null;
+      const days = (new Date().setHours(0, 0, 0, 0) - startDate) / (1000 * 60 * 60 * 24);
+      const wordToUse = wordsToUse[days];
+      setUsedWords([wordToUse]);
+      setUsedLetters([...new Set(wordToUse.split(''))]);
     } else if (finished === false && localStorage.finished === 'true') {
       setFinished(true);
       setTimeTaken(localStorage.time);
       setUsedLetters(Array(parseInt(localStorage.score)).fill('A'));
       setUsedWords(localStorage.words.split(','));
-    }
-  });
-
-  useEffect(() => {
-    if (usedWords.length === 0) {
+    } else if (
+      usedWords.length === 0 &&
+      (localStorage.finished === 'false' || !localStorage.finished)
+    ) {
       const days = (new Date().setHours(0, 0, 0, 0) - startDate) / (1000 * 60 * 60 * 24);
       const wordToUse = wordsToUse[days];
       setUsedWords([wordToUse]);
