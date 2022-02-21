@@ -51,6 +51,9 @@ export const Page = () => {
             .write(data)
             .then(() => {
               setCopied(true);
+              setTimeout(() => {
+                setCopied(false);
+              }, 1000);
             })
             .catch((e) => console.log(e));
         });
