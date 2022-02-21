@@ -68,7 +68,6 @@ export const Page = () => {
         fetch(dataUrl).then((res) => {
           //eslint-disable-next-line
           setCopyImage(res.blob());
-          copyToClipboard(res.blob());
         });
       })
       .catch((e) => console.log(e));
