@@ -31,13 +31,9 @@ export const Page = () => {
       localStorage['score'] = null;
       localStorage['finished'] = false;
       localStorage['time'] = null;
-      localStorage['words'] = [];
+      localStorage['words'] = null;
       localStorage['completedDate'] = null;
-    }
-  });
-
-  useEffect(() => {
-    if (finished === false && localStorage.finished === 'true') {
+    } else if (finished === false && localStorage.finished === 'true') {
       setFinished(true);
       setTimeTaken(localStorage.time);
       setUsedLetters(Array(parseInt(localStorage.score)).fill('A'));
