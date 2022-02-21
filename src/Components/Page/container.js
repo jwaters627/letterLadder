@@ -39,6 +39,7 @@ export const Page = () => {
   });
 
   const copyToClipboard = async (pngBlob) => {
+    console.log('SHOULD BE COPYING');
     try {
       await navigator.clipboard.write([
         // eslint-disable-next-line no-undef
@@ -59,6 +60,7 @@ export const Page = () => {
   const handleCreateImage = () => {
     const node = document.getElementById('shareImage');
     node.style.display = 'block';
+    console.log('MAKING IMAGE');
     toPng(node)
       .then((dataUrl) => {
         node.style.display = 'none';
