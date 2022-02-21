@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { toPng } from 'html-to-image';
-import { copyImageToClipboard } from 'copy-image-clipboard';
 import { PageUI } from './ui';
 import { alphabet } from '../../Constants/alphabet';
 import { checkForWords, validateWord } from '../../Utils/words';
@@ -44,21 +43,17 @@ export const Page = () => {
     node.style.display = 'block';
     toPng(node)
       .then((dataUrl) => {
-        const link = document.createElement('a');
-        console.log(dataUrl, link);
         node.style.display = 'none';
-        copyImageToClipboard(dataUrl)
-          .then(() => {
-            setCopied(true);
-            console.log('Image Copied');
-            setTimeout(() => {
-              setCopied(false);
-            }, 1000);
-          })
-          .catch((e) => {
-            setCopied(true);
-            console.log('Error: ', e.message);
-          });
+        fetch(dataUrl).then((res) => {
+          //eslint-disable-next-line
+          const data = [new ClipboardItem({ 'image/png': res.blob() })];
+          navigator.clipboard
+            .write(data)
+            .then(() => {
+              setCopied(true);
+            })
+            .catch((e) => console.log(e));
+        });
       })
       .catch((e) => console.log(e));
   };
