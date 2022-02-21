@@ -16,7 +16,9 @@ export const PageUI = ({
   notMobile,
   timeTaken,
   newlyUsedLetters,
-  finishGame
+  finishGame,
+  shareLink,
+  copied
 }) => {
   return (
     <div style={notMobile ? styles.page : styles.mobilePage}>
@@ -79,10 +81,12 @@ export const PageUI = ({
 
       {finished && (
         <CompleteModal
+          copied={copied}
           usedLetters={usedLetters}
           usedWords={usedWords}
           timeTaken={timeTaken}
           notMobile={notMobile}
+          shareLink={shareLink}
         />
       )}
       {rulesOpen && <RulesModal notMobile={notMobile} setRulesOpen={setRulesOpen} />}

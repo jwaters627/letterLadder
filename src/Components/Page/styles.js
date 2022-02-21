@@ -13,8 +13,7 @@ export const styles = {
     width: '100vw',
     backgroundColor: '#002f5b',
     height: '100vh',
-    marginLeft: '0',
-    marginTop: '30px'
+    marginLeft: '0'
   },
   input: {
     fontSize: '18px',

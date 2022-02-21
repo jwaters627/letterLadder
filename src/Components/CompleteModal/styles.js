@@ -8,7 +8,7 @@ export const styles = {
     backgroundColor: `rgba(0,0,0,0.7)`
   },
   modalContainer: {
-    backgroundColor: '#fff',
+    backgroundColor: '#002f5b',
     width: '50%',
     height: '92vh',
     marginLeft: '25%',
@@ -18,7 +18,7 @@ export const styles = {
     overFlow: 'scroll'
   },
   mobileModalContainer: {
-    backgroundColor: '#fff',
+    backgroundColor: '#002f5b',
     width: '100vw',
     height: '100vh',
     position: 'absolute',
@@ -26,18 +26,28 @@ export const styles = {
     paddingTop: '24px'
   },
   score: {
-    color: '#002f5b',
+    color: '#fff',
     fontWeight: '700'
   },
+  copiedText: {
+    color: '#fff',
+    margin: '0'
+  },
   time: {
-    color: '#002f5b',
+    color: '#fff',
     fontWeight: '700',
     paddingBottom: '18px',
-    borderBottom: `1px solid ${'#002f5b'}`
+    borderBottom: `1px solid ${'#fff'}`
   },
   usedWords: {
     fontSize: '14px',
     marginTop: '4px',
-    marginBottom: '4px'
+    marginBottom: '4px',
+    color: '#fff'
+  },
+  shareButton: {
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer'
   }
 };

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { toPng } from 'html-to-image';
+import { copyImageToClipboard } from 'copy-image-clipboard';
 import { PageUI } from './ui';
 import { alphabet } from '../../Constants/alphabet';
 import { checkForWords, validateWord } from '../../Utils/words';
@@ -13,10 +15,10 @@ export const Page = () => {
   const [finished, setFinished] = useState(false);
   const [startTime, setStartTime] = useState(null);
   const [timeTaken, setTimeTaken] = useState(null);
+  const [copied, setCopied] = useState(false);
   const [newlyUsedLetters, setNewlyUsedLetters] = useState(null);
   const windowWidth = window.innerWidth;
-  const screenWidth = screen.width;
-  const notMobile = (!!windowWidth && windowWidth > 800) || (!!screenWidth && screenWidth > 800);
+  const notMobile = !!windowWidth && windowWidth > 800;
   const startDate = new Date('2/20/22').setHours(0, 0, 0, 0);
 
   useEffect(() => {
@@ -36,6 +38,29 @@ export const Page = () => {
       setUsedLetters([...new Set(wordToUse.split(''))]);
     }
   });
+
+  const handleCreateImage = () => {
+    const node = document.getElementById('shareImage');
+    node.style.display = 'block';
+    toPng(node)
+      .then((dataUrl) => {
+        const link = document.createElement('a');
+        console.log(dataUrl, link);
+        node.style.display = 'none';
+        copyImageToClipboard(dataUrl)
+          .then(() => {
+            setCopied(true);
+            console.log('Image Copied');
+            setTimeout(() => {
+              setCopied(false);
+            }, 1000);
+          })
+          .catch((e) => {
+            console.log('Error: ', e.message);
+          });
+      })
+      .catch((e) => console.log(e));
+  };
 
   const handleWordChange = (e) => {
     const newWord = e.target.value.replace(/\s+/g, '').toUpperCase();
@@ -66,7 +91,7 @@ export const Page = () => {
     const min = Math.floor((ms / 1000 / 60) << 0);
     const sec = Math.floor((ms / 1000) % 60);
     const seconds = sec < 10 ? `0${sec}` : sec;
-    const timeString = `${min}: ${seconds}`;
+    const timeString = `${min}:${seconds}`;
     setTimeTaken(timeString);
     return timeString;
   };
@@ -103,21 +128,63 @@ export const Page = () => {
   };
 
   return (
-    <PageUI
-      finished={finished}
-      handleEnter={handleEnter}
-      valid={valid}
-      addWord={addWord}
-      usedLetters={usedLetters}
-      usedWords={usedWords}
-      currentWord={currentWord}
-      handleWordChange={handleWordChange}
-      rulesOpen={rulesOpen}
-      setRulesOpen={setRulesOpen}
-      notMobile={notMobile}
-      timeTaken={timeTaken}
-      newlyUsedLetters={newlyUsedLetters}
-      finishGame={finishGame}
-    />
+    <>
+      <div
+        style={{
+          display: 'none',
+          borderRadius: '10px',
+          width: '120px',
+          height: '120px',
+          backgroundColor: '#002f5b'
+        }}
+        id="shareImage">
+        <div style={{ marginTop: '10px' }}>
+          <p
+            style={{
+              paddingTop: '10px',
+              paddingLeft: '6px',
+              paddingBottom: '10px',
+              color: '#fff',
+              fontSize: '8px',
+              borderBottom: '1px solid #fff'
+            }}>
+            letterladdergame.com
+          </p>
+          <p style={{ paddingLeft: '6px', marginTop: '10px', color: '#fff', fontSize: '8px' }}>
+            LEVEL: {usedLetters.length}
+          </p>
+          <p style={{ paddingLeft: '6px', marginTop: '10px', color: '#fff', fontSize: '8px' }}>
+            TIME: {timeTaken}
+          </p>
+          <p style={{ paddingLeft: '6px', marginTop: '10px', color: '#fff', fontSize: '8px' }}>
+            DATE:{' '}
+            {new Date().toLocaleDateString('en-us', {
+              weekday: 'long',
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric'
+            })}
+          </p>
+        </div>
+      </div>
+      <PageUI
+        finished={finished}
+        handleEnter={handleEnter}
+        valid={valid}
+        addWord={addWord}
+        usedLetters={usedLetters}
+        usedWords={usedWords}
+        currentWord={currentWord}
+        handleWordChange={handleWordChange}
+        rulesOpen={rulesOpen}
+        setRulesOpen={setRulesOpen}
+        notMobile={notMobile}
+        timeTaken={timeTaken}
+        newlyUsedLetters={newlyUsedLetters}
+        finishGame={finishGame}
+        shareLink={handleCreateImage}
+        copied={copied}
+      />
+    </>
   );
 };

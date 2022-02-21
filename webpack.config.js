@@ -22,6 +22,7 @@ const config = {
     rules: [
       {
         test: /\.(js|jsx)$/i,
+        exclude: /(node_modules)/,
         loader: 'babel-loader',
         options: {
           presets: ['@babel/preset-env', '@babel/preset-react']
