@@ -22,7 +22,7 @@ export const Page = () => {
   const startDate = new Date('2/20/22').setHours(0, 0, 0, 0);
 
   useEffect(() => {
-    if (new Date().setHours(0, 0, 0, 0) !== localStorage.completedDate) {
+    if (finished && new Date().setHours(0, 0, 0, 0) !== localStorage.completedDate) {
       setFinished(false);
       localStorage['score'] = null;
       localStorage['finished'] = false;
