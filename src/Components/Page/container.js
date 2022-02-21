@@ -15,6 +15,7 @@ export const Page = () => {
   const [startTime, setStartTime] = useState(null);
   const [timeTaken, setTimeTaken] = useState(null);
   const [copied, setCopied] = useState(false);
+  const [copyImage, setCopyImage] = useState(null);
   const [newlyUsedLetters, setNewlyUsedLetters] = useState(null);
   const windowWidth = window.innerWidth;
   const notMobile = !!windowWidth && windowWidth > 800;
@@ -38,13 +39,13 @@ export const Page = () => {
     }
   });
 
-  const copyToClipboard = async (pngBlob) => {
+  const copyToClipboard = async () => {
     console.log('SHOULD BE COPYING');
     try {
       await navigator.clipboard.write([
         // eslint-disable-next-line no-undef
         new ClipboardItem({
-          'image/png': pngBlob
+          'image/png': copyImage
         })
       ]);
       setCopied(true);
@@ -66,6 +67,7 @@ export const Page = () => {
         node.style.display = 'none';
         fetch(dataUrl).then((res) => {
           //eslint-disable-next-line
+          setCopyImage(res.blob());
           copyToClipboard(res.blob());
         });
       })
@@ -123,6 +125,7 @@ export const Page = () => {
     localStorage['time'] = gameTime;
     localStorage['words'] = usedWords;
     setFinished(true);
+    handleCreateImage();
   };
 
   const addWord = () => {
@@ -192,7 +195,7 @@ export const Page = () => {
         timeTaken={timeTaken}
         newlyUsedLetters={newlyUsedLetters}
         finishGame={finishGame}
-        shareLink={handleCreateImage}
+        shareLink={copyToClipboard}
         copied={copied}
       />
     </>

@@ -88,9 +88,7 @@ export const validateWord = (word, usedLetters, usedWords) => {
   const availableLetters = alphabet.filter((letter) => !usedLetters.includes(letter));
   const singleNewletter = availableLetters.filter((letter) => word.toUpperCase().includes(letter));
   if (!singleNewletter || singleNewletter.length > 1) return false;
-  const alreadyUsed = usedWords.includes((w) => {
-    w.toUpperCase() === word.toUpperCase();
-  });
+  const alreadyUsed = usedWords.includes(word.toUpperCase());
   if (alreadyUsed) return false;
   const isWord =
     dictionary[word.length] &&
