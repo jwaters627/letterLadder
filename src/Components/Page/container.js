@@ -22,6 +22,17 @@ export const Page = () => {
   const startDate = new Date('2/20/22').setHours(0, 0, 0, 0);
 
   useEffect(() => {
+    if (new Date().setHours(0, 0, 0, 0) !== localStorage.completedDate) {
+      setFinished(false);
+      localStorage['score'] = null;
+      localStorage['finished'] = false;
+      localStorage['time'] = null;
+      localStorage['words'] = [];
+      localStorage['completedDate'] = null;
+    }
+  });
+
+  useEffect(() => {
     if (finished === false && localStorage.finished === 'true') {
       setFinished(true);
       setTimeTaken(localStorage.time);
@@ -40,7 +51,6 @@ export const Page = () => {
   });
 
   const copyToClipboard = () => {
-    console.log('SHOULD BE COPYING');
     navigator.clipboard.write([
       // eslint-disable-next-line no-undef
       new ClipboardItem({
@@ -56,7 +66,6 @@ export const Page = () => {
   const handleCreateImage = () => {
     const node = document.getElementById('shareImage');
     node.style.display = 'block';
-    console.log('MAKING IMAGE');
     toPng(node)
       .then((dataUrl) => {
         node.style.display = 'none';
@@ -118,6 +127,7 @@ export const Page = () => {
     localStorage['finished'] = true;
     localStorage['time'] = gameTime;
     localStorage['words'] = usedWords;
+    localStorage['completedDate'] = new Date().setHours(0, 0, 0, 0);
     setFinished(true);
     handleCreateImage();
   };
