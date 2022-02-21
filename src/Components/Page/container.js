@@ -38,6 +38,24 @@ export const Page = () => {
     }
   });
 
+  const copyToClipboard = async (pngBlob) => {
+    try {
+      await navigator.clipboard.write([
+        // eslint-disable-next-line no-undef
+        new ClipboardItem({
+          'image/png': pngBlob
+        })
+      ]);
+      setCopied(true);
+      setTimeout(() => {
+        setCopied(false);
+      }, 1000);
+      console.log('Image copied');
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const handleCreateImage = () => {
     const node = document.getElementById('shareImage');
     node.style.display = 'block';
@@ -46,16 +64,7 @@ export const Page = () => {
         node.style.display = 'none';
         fetch(dataUrl).then((res) => {
           //eslint-disable-next-line
-          const data = [new ClipboardItem({ 'image/png': res.blob() })];
-          navigator.clipboard
-            .write(data)
-            .then(() => {
-              setCopied(true);
-              setTimeout(() => {
-                setCopied(false);
-              }, 1000);
-            })
-            .catch((e) => console.log(e));
+          copyToClipboard(res.blob());
         });
       })
       .catch((e) => console.log(e));
