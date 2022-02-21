@@ -29,7 +29,7 @@ export const Page = () => {
     ) {
       setFinished(false);
       localStorage['score'] = null;
-      localStorage['finished'] = false;
+      localStorage['finished'] = null;
       localStorage['time'] = null;
       localStorage['words'] = null;
       localStorage['completedDate'] = null;
