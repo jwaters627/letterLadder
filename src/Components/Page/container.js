@@ -39,23 +39,18 @@ export const Page = () => {
     }
   });
 
-  const copyToClipboard = async () => {
+  const copyToClipboard = () => {
     console.log('SHOULD BE COPYING');
-    try {
-      await navigator.clipboard.write([
-        // eslint-disable-next-line no-undef
-        new ClipboardItem({
-          'image/png': copyImage
-        })
-      ]);
-      setCopied(true);
-      setTimeout(() => {
-        setCopied(false);
-      }, 1000);
-      console.log('Image copied');
-    } catch (error) {
-      console.error(error);
-    }
+    navigator.clipboard.write([
+      // eslint-disable-next-line no-undef
+      new ClipboardItem({
+        'image/png': copyImage
+      })
+    ]);
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 1000);
   };
 
   const handleCreateImage = () => {
