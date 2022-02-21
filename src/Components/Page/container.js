@@ -56,6 +56,7 @@ export const Page = () => {
             }, 1000);
           })
           .catch((e) => {
+            setCopied(true);
             console.log('Error: ', e.message);
           });
       })

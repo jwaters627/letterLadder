@@ -50,7 +50,7 @@ export const PageUI = ({
           autoFocus="autoFocus"
           onChange={handleWordChange}
           value={currentWord}
-          onBlur={({ target }) => target.focus()}
+          onBlur={({ target }) => !finished && !rulesOpen && target.focus()}
         />
         <button
           style={!valid ? styles.disabledAddButton : styles.addButton}
