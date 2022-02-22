@@ -38,6 +38,9 @@ export const RulesModalUI = ({ setRulesOpen, notMobile }) => {
             </p>
           </li>
         </ul>
+        <p style={styles.objectiveText}>
+          Send any questions, concerns or found bugs to letterladdergame@gmail.com
+        </p>
       </div>
     </div>
   );

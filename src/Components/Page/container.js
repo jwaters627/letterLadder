@@ -150,6 +150,7 @@ export const Page = () => {
 
   const finishGame = () => {
     const gameTime = endTime();
+    document.getElementById('textInput').blur();
     localStorage['score'] = usedLetters.length;
     localStorage['finished'] = true;
     localStorage['time'] = gameTime;
