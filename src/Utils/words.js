@@ -90,12 +90,12 @@ export const validateWord = (word, usedLetters, usedWords) => {
   if (!singleNewletter || singleNewletter.length === 0 || singleNewletter.length > 1) return false;
   const alreadyUsed = usedWords.includes(word.toUpperCase());
   if (alreadyUsed) return false;
-  const isWord =
-    dictionary[word.length] &&
-    (dictionary[word.length][word.split('').sort().join('').toLowerCase()] || []).includes(
-      word.toLowerCase()
-    );
-  if (!isWord) return false;
+  // const isWord =
+  //   dictionary[word.length] &&
+  //   (dictionary[word.length][word.split('').sort().join('').toLowerCase()] || []).includes(
+  //     word.toLowerCase()
+  //   );
+  // if (!isWord) return false;
   const wordLetters = {};
   usedWords[0].split('').forEach((letter) => {
     if (wordLetters[letter.toUpperCase()]) wordLetters[letter.toUpperCase()] += 1;
@@ -109,4 +109,13 @@ export const validateWord = (word, usedLetters, usedWords) => {
     } else return false;
   });
   return wordCheck;
+};
+
+export const checkWordExistence = (word) => {
+  const isWord =
+    dictionary[word.length] &&
+    (dictionary[word.length][word.split('').sort().join('').toLowerCase()] || []).includes(
+      word.toLowerCase()
+    );
+  return isWord;
 };

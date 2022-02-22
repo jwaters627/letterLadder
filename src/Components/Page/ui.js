@@ -18,7 +18,8 @@ export const PageUI = ({
   newlyUsedLetters,
   finishGame,
   shareLink,
-  copied
+  copied,
+  missedGuesses
 }) => {
   return (
     <div style={notMobile ? styles.page : styles.mobilePage}>
@@ -60,6 +61,7 @@ export const PageUI = ({
         </button>
       </div>
       <p style={styles.score}>{`LEVEL: ${usedLetters.length}`}</p>
+      <p style={styles.score}>{`MISSES LEFT: ${3 - missedGuesses}`}</p>
 
       {usedWords.map((word, index) => {
         return (

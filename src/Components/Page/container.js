@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { toPng } from 'html-to-image';
 import { PageUI } from './ui';
 import { alphabet } from '../../Constants/alphabet';
-import { checkForWords, validateWord } from '../../Utils/words';
+import { checkForWords, validateWord, checkWordExistence } from '../../Utils/words';
 import { wordsToUse } from '../../Constants/wordsToUse';
 
 export const Page = () => {
@@ -15,6 +15,7 @@ export const Page = () => {
   const [startTime, setStartTime] = useState(null);
   const [timeTaken, setTimeTaken] = useState(null);
   const [copied, setCopied] = useState(false);
+  const [missedGuesses, setMissedGuesses] = useState(0);
   const [copyImage, setCopyImage] = useState(null);
   const [newlyUsedLetters, setNewlyUsedLetters] = useState(null);
   const windowWidth = window.innerWidth;
@@ -80,6 +81,29 @@ export const Page = () => {
       .catch((e) => console.log(e));
   };
 
+  const handleCreateImageDesktop = () => {
+    const node = document.getElementById('shareImage');
+    node.style.display = 'block';
+    toPng(node)
+      .then((dataUrl) => {
+        node.style.display = 'none';
+        fetch(dataUrl).then((res) => {
+          //eslint-disable-next-line
+          const data = [new ClipboardItem({ 'image/png': res.blob() })];
+          navigator.clipboard
+            .write(data)
+            .then(() => {
+              setCopied(true);
+              setTimeout(() => {
+                setCopied(false);
+              }, 1000);
+            })
+            .catch((e) => console.log(e));
+        });
+      })
+      .catch((e) => console.log(e));
+  };
+
   const handleWordChange = (e) => {
     const newWord = e.target.value.replace(/\s+/g, '').toUpperCase();
     const availableLetters = alphabet.filter((letter) => !usedLetters.includes(letter));
@@ -99,7 +123,7 @@ export const Page = () => {
 
   const handleEnter = (e) => {
     if (valid && e.keyCode === 13) {
-      addWord();
+      checkIfCanAdd();
     }
   };
 
@@ -132,7 +156,20 @@ export const Page = () => {
     localStorage['words'] = usedWords;
     localStorage['completedDate'] = new Date().setHours(0, 0, 0, 0);
     setFinished(true);
-    handleCreateImage();
+    !notMobile && handleCreateImage();
+  };
+
+  const checkIfCanAdd = () => {
+    const isWord = checkWordExistence(currentWord);
+    if (!isWord) {
+      setValid(false);
+      if (missedGuesses === 2) {
+        finishGame();
+      }
+      setMissedGuesses(missedGuesses + 1);
+    } else {
+      addWord();
+    }
   };
 
   const addWord = () => {
@@ -191,7 +228,7 @@ export const Page = () => {
         finished={finished}
         handleEnter={handleEnter}
         valid={valid}
-        addWord={addWord}
+        addWord={checkIfCanAdd}
         usedLetters={usedLetters}
         usedWords={usedWords}
         currentWord={currentWord}
@@ -202,8 +239,9 @@ export const Page = () => {
         timeTaken={timeTaken}
         newlyUsedLetters={newlyUsedLetters}
         finishGame={finishGame}
-        shareLink={copyToClipboard}
+        shareLink={notMobile ? handleCreateImageDesktop : copyToClipboard}
         copied={copied}
+        missedGuesses={missedGuesses}
       />
     </>
   );

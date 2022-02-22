@@ -12,7 +12,7 @@ export const CompleteModalUI = ({
   return (
     <div style={styles.fullPage}>
       <div style={notMobile ? styles.modalContainer : styles.mobileModalContainer}>
-        <div style={{ height: '36px' }}>
+        <div style={styles.shareContainer}>
           {copied ? (
             <p style={styles.copiedText}>Copied!</p>
           ) : (
@@ -28,6 +28,7 @@ export const CompleteModalUI = ({
                   fillRule="evenodd"
                 />
               </svg>
+              <p style={styles.shareText}>SHARE</p>
             </button>
           )}
         </div>

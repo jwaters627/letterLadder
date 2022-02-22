@@ -9,7 +9,7 @@ export const styles = {
     zIndex: '9999999'
   },
   modalContainer: {
-    backgroundColor: '#fff',
+    backgroundColor: '#002f5b',
     width: '50%',
     height: '400px',
     marginLeft: '25%',
@@ -18,7 +18,7 @@ export const styles = {
     padding: '18px'
   },
   mobileModalContainer: {
-    backgroundColor: '#fff',
+    backgroundColor: '#002f5b',
     width: '100vw',
     height: '100vh',
     position: 'absolute',
@@ -27,10 +27,11 @@ export const styles = {
   },
   list: {
     textAlign: 'left',
-    marginTop: '48px',
+    marginTop: '30px',
     wordWrap: 'break-word',
     paddingLeft: '18px',
-    paddingRight: '18px'
+    paddingRight: '18px',
+    color: '#fff'
   },
   closeButton: {
     background: 'none',
@@ -40,7 +41,8 @@ export const styles = {
     position: 'absolute',
     top: '8px',
     right: '8px',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    color: '#fff'
   },
   closeButtonMobile: {
     background: 'none',
@@ -50,6 +52,14 @@ export const styles = {
     position: 'absolute',
     top: '18px',
     right: '24px',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    color: '#fff'
+  },
+  objectiveText: {
+    marginTop: '48px',
+    fontSize: '18px',
+    fontWeight: 700,
+    color: '#fff',
+    paddingRight: '18px'
   }
 };

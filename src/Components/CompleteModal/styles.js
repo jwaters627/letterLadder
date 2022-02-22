@@ -48,6 +48,17 @@ export const styles = {
   shareButton: {
     background: 'none',
     border: 'none',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center'
+  },
+  shareContainer: {
+    height: '36px',
+    display: 'flex',
+    alignItems: 'center'
+  },
+  shareText: {
+    color: '#fff',
+    marginLeft: '8px'
   }
 };
