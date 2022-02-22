@@ -51,7 +51,15 @@ export const PageUI = ({
           autoFocus="autoFocus"
           onChange={handleWordChange}
           value={currentWord}
-          onBlur={({ target }) => !finished && !rulesOpen && target.focus()}
+          onBlur={({ target }) => {
+            window.scrollTo(0, 0);
+            document.body.scrollTop = 0;
+            if (finished || rulesOpen) {
+              target.blur();
+            } else {
+              target.focus();
+            }
+          }}
         />
         <button
           style={!valid ? styles.disabledAddButton : styles.addButton}
