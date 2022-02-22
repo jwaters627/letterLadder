@@ -12,7 +12,7 @@ export const styles = {
   mobilePage: {
     width: '100vw',
     backgroundColor: '#002f5b',
-    height: '100vh',
+    minHeight: '100vh',
     marginLeft: '0'
   },
   input: {
