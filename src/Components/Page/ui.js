@@ -28,7 +28,10 @@ export const PageUI = ({
         <div style={styles.headerButtons}>
           <button
             style={notMobile ? styles.rulesButton : styles.mobileRulesButton}
-            onClick={() => setRulesOpen(true)}>
+            onClick={() => {
+              document.getElementById('textInput').blur();
+              setRulesOpen(true);
+            }}>
             RULES
           </button>
           <button
@@ -46,14 +49,13 @@ export const PageUI = ({
       <div style={styles.inputContainer}>
         <input
           style={styles.input}
+          id="textInput"
           spellCheck={true}
           onKeyDown={handleEnter}
           autoFocus="autoFocus"
           onChange={handleWordChange}
           value={currentWord}
           onBlur={({ target }) => {
-            window.scrollTo(0, 0);
-            document.body.scrollTop = 0;
             if (finished || rulesOpen) {
               target.blur();
             } else {
