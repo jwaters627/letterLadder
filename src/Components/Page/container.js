@@ -173,6 +173,7 @@ export const Page = () => {
   };
 
   const addWord = () => {
+    document.getElementById('textInput').focus();
     const availableLetters = alphabet.filter((letter) => !usedLetters.includes(letter));
     const newLetter = availableLetters.filter((letter) =>
       currentWord.toUpperCase().includes(letter)

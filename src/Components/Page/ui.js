@@ -28,10 +28,7 @@ export const PageUI = ({
         <div style={styles.headerButtons}>
           <button
             style={notMobile ? styles.rulesButton : styles.mobileRulesButton}
-            onClick={() => {
-              document.getElementById('textInput').blur();
-              setRulesOpen(true);
-            }}>
+            onClick={() => setRulesOpen(true)}>
             RULES
           </button>
           <button
@@ -49,19 +46,12 @@ export const PageUI = ({
       <div style={styles.inputContainer}>
         <input
           style={styles.input}
-          id="textInput"
           spellCheck={true}
           onKeyDown={handleEnter}
           autoFocus="autoFocus"
           onChange={handleWordChange}
           value={currentWord}
-          onBlur={({ target }) => {
-            if (finished || rulesOpen) {
-              target.blur();
-            } else {
-              target.focus();
-            }
-          }}
+          id="textInput"
         />
         <button
           style={!valid ? styles.disabledAddButton : styles.addButton}
