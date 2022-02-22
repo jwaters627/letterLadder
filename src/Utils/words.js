@@ -87,7 +87,7 @@ export const validateWord = (word, usedLetters, usedWords) => {
   if (word.length < 3) return false;
   const availableLetters = alphabet.filter((letter) => !usedLetters.includes(letter));
   const singleNewletter = availableLetters.filter((letter) => word.toUpperCase().includes(letter));
-  if (!singleNewletter || singleNewletter.length > 1) return false;
+  if (!singleNewletter || singleNewletter.length === 0 || singleNewletter.length > 1) return false;
   const alreadyUsed = usedWords.includes(word.toUpperCase());
   if (alreadyUsed) return false;
   const isWord =
