@@ -99,10 +99,16 @@ export const styles = {
   },
   score: {
     color: '#fff',
-    flexGrow: 1,
     alignItems: 'start',
     textAlign: 'left',
     paddingLeft: '18px',
     marginBottom: 0
+  },
+  levelContainer: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'space-between',
+    paddingRight: '30px',
+    marginBottom: '24px'
   }
 };

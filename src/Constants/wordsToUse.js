@@ -1,1 +1,19 @@
-export const wordsToUse = ['PAUSED', 'ROUGH', 'FREELY', 'CREEP', 'BLAZED', 'CLAWED', 'ACE'];
+export const wordsToUse = [
+  'PAUSED',
+  'ROUGH',
+  'FREELY',
+  'CREEP',
+  'BLAZED',
+  'GARBAGE',
+  'CLAWED',
+  'ACE',
+  'APPLES',
+  'STINKY',
+  'SUITES',
+  'MOUNT',
+  'WHALE',
+  'QUART',
+  'RAISE',
+  'CUBIC',
+  'GLIMPSE'
+];

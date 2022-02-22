@@ -60,9 +60,10 @@ export const PageUI = ({
           ADD WORD
         </button>
       </div>
-      <p style={styles.score}>{`LEVEL: ${usedLetters.length}`}</p>
-      <p style={styles.score}>{`MISSES LEFT: ${3 - missedGuesses}`}</p>
-
+      <div style={styles.levelContainer}>
+        <p style={styles.score}>{`LEVEL: ${usedLetters.length}`}</p>
+        <p style={styles.score}>{`MISSES LEFT: ${3 - missedGuesses}`}</p>
+      </div>
       {usedWords.map((word, index) => {
         return (
           <div style={styles.wordsContainer} key={word}>
