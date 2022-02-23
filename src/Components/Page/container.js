@@ -44,10 +44,7 @@ export const Page = () => {
       setUsedLetters(Array(parseInt(localStorage.score)).fill('A'));
       setUsedWords(localStorage.words.split(','));
       handleCreateImage();
-    } else if (
-      usedWords.length === 0 &&
-      (localStorage.finished === 'false' || !localStorage.finished)
-    ) {
+    } else if (usedWords.length === 0) {
       const days = (new Date().setHours(0, 0, 0, 0) - startDate) / (1000 * 60 * 60 * 24);
       const wordToUse = wordsToUse[days];
       setUsedWords([wordToUse]);
