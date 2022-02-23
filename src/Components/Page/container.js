@@ -240,7 +240,6 @@ export const Page = () => {
         notMobile={notMobile}
         timeTaken={timeTaken}
         newlyUsedLetters={newlyUsedLetters}
-        finishGame={finishGame}
         shareLink={notMobile ? handleCreateImageDesktop : copyToClipboard}
         copied={copied}
         missedGuesses={missedGuesses}

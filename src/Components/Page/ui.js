@@ -16,7 +16,6 @@ export const PageUI = ({
   notMobile,
   timeTaken,
   newlyUsedLetters,
-  finishGame,
   shareLink,
   copied,
   missedGuesses
@@ -30,11 +29,6 @@ export const PageUI = ({
             style={notMobile ? styles.rulesButton : styles.mobileRulesButton}
             onClick={() => setRulesOpen(true)}>
             RULES
-          </button>
-          <button
-            style={notMobile ? styles.rulesButton : styles.mobileRulesButton}
-            onClick={finishGame}>
-            GIVE UP
           </button>
         </div>
       </div>

@@ -21,7 +21,7 @@ export const styles = {
     outline: 'none'
   },
   header: {
-    backgroundColor: '#fff',
+    backgroundColor: '#89cff0',
     paddingLeft: '18px',
     paddingRight: '18px',
     marginBottom: '18px',
