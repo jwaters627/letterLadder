@@ -13,7 +13,7 @@ export const RulesModalUI = ({ setRulesOpen, notMobile }) => {
         <p style={styles.objectiveText}>
           Objective: Get to level 26 by creating new words from the letters in the previous word
           plus one new letter in each move. Each letter used counts as a level (you will start at
-          the level of number of unique letters in the starting word).
+          the level equal to of number of unique letters in the starting word).
         </p>
         <ul style={styles.list}>
           <li>

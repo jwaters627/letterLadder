@@ -43,6 +43,7 @@ export const Page = () => {
       setTimeTaken(localStorage.time);
       setUsedLetters(Array(parseInt(localStorage.score)).fill('A'));
       setUsedWords(localStorage.words.split(','));
+      handleCreateImage();
     } else if (
       usedWords.length === 0 &&
       (localStorage.finished === 'false' || !localStorage.finished)
