@@ -19,7 +19,7 @@ export const Page = () => {
   const [copyImage, setCopyImage] = useState(null);
   const [newlyUsedLetters, setNewlyUsedLetters] = useState(null);
   const windowWidth = window.innerWidth;
-  const notMobile = !!windowWidth && windowWidth > 800;
+  const notMobile = !!windowWidth && windowWidth > 1025;
   const startDate = new Date('2/20/22').setHours(0, 0, 0, 0);
 
   useEffect(() => {
