@@ -61,5 +61,8 @@ export const styles = {
     fontWeight: 700,
     color: '#fff',
     paddingRight: '18px'
+  },
+  emailLink: {
+    color: '#fff'
   }
 };

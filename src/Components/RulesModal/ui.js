@@ -39,7 +39,10 @@ export const RulesModalUI = ({ setRulesOpen, notMobile }) => {
           </li>
         </ul>
         <p style={styles.objectiveText}>
-          Send any questions, concerns or found bugs to letterladdergame@gmail.com
+          Send any questions, concerns or found bugs to{' '}
+          <a style={styles.emailLink} href="mailto: letterladdergame@gmail.com">
+            letterladdergame@gmail.com
+          </a>
         </p>
       </div>
     </div>
