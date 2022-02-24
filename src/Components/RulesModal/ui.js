@@ -11,9 +11,9 @@ export const RulesModalUI = ({ setRulesOpen, notMobile }) => {
           x
         </button>
         <p style={styles.objectiveText}>
-          Objective: Get to level 26 by creating new words from the letters in the previous word
-          plus one new letter in each move. Each letter used counts as a level (you will start at
-          the level equal to of number of unique letters in the starting word).
+          Objective: New word every day. Get to level 26 by creating new words from the letters in
+          the previous word plus one new letter in each move. Each letter used counts as a level
+          (you will start at the level equal to the number of unique letters in the starting word).
         </p>
         <ul style={styles.list}>
           <li>
