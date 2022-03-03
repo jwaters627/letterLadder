@@ -146,13 +146,13 @@ export const Page = () => {
     return noWordsLeft;
   };
 
-  const finishGame = () => {
+  const finishGame = (newWords, newLetters) => {
     const gameTime = endTime();
     document.getElementById('textInput').blur();
-    localStorage['score'] = usedLetters.length;
+    localStorage['score'] = newLetters.length;
     localStorage['finished'] = true;
     localStorage['time'] = gameTime;
-    localStorage['words'] = usedWords;
+    localStorage['words'] = newWords;
     localStorage['completedDate'] = new Date().setHours(0, 0, 0, 0);
     setFinished(true);
     !notMobile && handleCreateImage();
@@ -163,7 +163,7 @@ export const Page = () => {
     if (!isWord) {
       setValid(false);
       if (missedGuesses === 2) {
-        finishGame();
+        finishGame(usedWords, usedLetters);
       }
       setMissedGuesses(missedGuesses + 1);
     } else {
@@ -179,7 +179,8 @@ export const Page = () => {
     );
     setUsedWords([currentWord, ...usedWords]);
     setUsedLetters([...usedLetters, ...newLetter]);
-    if (checkWordsLeft(currentWord, [...usedLetters, ...newLetter])) finishGame();
+    if (checkWordsLeft(currentWord, [...usedLetters, ...newLetter]))
+      finishGame([currentWord, ...usedWords], [...usedLetters, ...newLetter]);
     setCurrentWord('');
     setValid(false);
   };
