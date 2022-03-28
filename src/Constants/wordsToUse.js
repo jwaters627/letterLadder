@@ -34,5 +34,10 @@ export const wordsToUse = [
   'NOTE',
   'EDGE',
   'BISHOP',
-  'NIGHT'
+  'NIGHT',
+  'PLAGUE',
+  'FLING',
+  'TOUT',
+  'CHICK',
+  'SLICE'
 ];
