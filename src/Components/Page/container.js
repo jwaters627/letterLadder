@@ -35,9 +35,7 @@ export const Page = () => {
       localStorage['words'] = null;
       localStorage['completedDate'] = null;
       const days = Math.ceil((new Date().setHours(0, 0, 0, 0) - startDate) / (1000 * 60 * 60 * 24));
-
-      const wordToUse = wordsToUse[days];
-      console.log(days);
+      const wordToUse = wordsToUse[days % wordsToUse.length];
       setUsedWords([wordToUse]);
       setUsedLetters([...new Set(wordToUse.split(''))]);
     } else if (finished === false && localStorage.finished === 'true') {
@@ -48,9 +46,7 @@ export const Page = () => {
       handleCreateImage();
     } else if (usedWords.length === 0) {
       const days = Math.ceil((new Date().setHours(0, 0, 0, 0) - startDate) / (1000 * 60 * 60 * 24));
-      const wordToUse = wordsToUse[days];
-      console.log(days);
-
+      const wordToUse = wordsToUse[days % wordsToUse.length];
       setUsedWords([wordToUse]);
       setUsedLetters([...new Set(wordToUse.split(''))]);
     }
