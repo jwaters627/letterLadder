@@ -6,6 +6,10 @@ import { LetterIntersection } from './pages';
 function App() {
   return (
     <HashRouter>
+      <div>
+        <a href="/">home</a>
+        <a href="/#/letterIntersection">intersection</a>
+      </div>
       <Routes>
         <Route path="/" element={<LetterLadder />} />
         <Route path="/letterIntersection" element={<LetterIntersection />} />
