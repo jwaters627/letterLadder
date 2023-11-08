@@ -1,16 +1,16 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import { LetterLadder } from './pages';
 import { LetterIntersection } from './pages';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<LetterLadder />} />
         <Route path="/letterIntersection" element={<LetterIntersection />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
