@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { toPng } from 'html-to-image';
-import { PageUI } from './ui';
+import { LetterLadderUI } from './ui';
 import { alphabet } from '../../Constants/alphabet';
 import { checkForWords, validateWord, checkWordExistence } from '../../Utils/words';
 import { wordsToUse } from '../../Constants/wordsToUse';
 
-export const Page = () => {
+export const LetterLadder = () => {
   const [currentWord, setCurrentWord] = useState('');
   const [usedLetters, setUsedLetters] = useState([]);
   const [usedWords, setUsedWords] = useState([]);
@@ -225,7 +225,7 @@ export const Page = () => {
           </p>
         </div>
       </div>
-      <PageUI
+      <LetterLadderUI
         finished={finished}
         handleEnter={handleEnter}
         valid={valid}

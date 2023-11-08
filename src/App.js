@@ -1,11 +1,16 @@
 import React from 'react';
-import { Page } from './Components';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { LetterLadder } from './pages';
+import { LetterIntersection } from './pages';
 
 function App() {
   return (
-    <div style={{ fontFamily: 'Helvetica' }} className="App">
-      <Page />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LetterLadder />} />
+        <Route path="/letterIntersection" element={<LetterIntersection />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

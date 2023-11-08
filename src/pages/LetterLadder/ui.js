@@ -1,8 +1,8 @@
 import React from 'react';
-import { Alphabet, RulesModal, CompleteModal } from '../';
+import { Alphabet, RulesModal, CompleteModal } from '../../Components';
 import { styles } from './styles';
 
-export const PageUI = ({
+export const LetterLadderUI = ({
   handleWordChange,
   currentWord,
   usedWords,

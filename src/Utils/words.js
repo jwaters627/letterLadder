@@ -119,3 +119,14 @@ export const checkWordExistence = (word) => {
     );
   return isWord;
 };
+
+export const isWord = (word) => {
+  const wordLength = word.length;
+  if (wordLength < 3) return false;
+  const isWord =
+    dictionary[wordLength] &&
+    (dictionary[wordLength][word.split('').sort().join('').toLowerCase()] || []).includes(
+      word.toLowerCase()
+    );
+  return isWord;
+};
