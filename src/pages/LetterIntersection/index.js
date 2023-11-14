@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './styles.css';
+import { styles } from './styles';
 // import { StartModal } from './components/StartModal';
 import { isWord } from '../../Utils/words';
 
@@ -345,9 +345,9 @@ export const LetterIntersection = () => {
     handleReset();
   };
   return (
-    <div className="App">
-      <div className="grid">
-        <div className="timer">{timeLeft}</div>
+    <div style={styles.container}>
+      <div style={styles.grid}>
+        <div style={styles.timer}>{timeLeft}</div>
         <svg width={GRID_SIZE * CELL_SIZE} height={GRID_SIZE * CELL_SIZE}>
           {lines.map((line, index) => (
             <line
@@ -379,33 +379,33 @@ export const LetterIntersection = () => {
           )}
         </svg>
       </div>
-      <div className="word-submit">
-        <button className="submit-button" disabled={!validWord} onClick={handleSubmitWord}>
+      <div style={styles.wordSubmit}>
+        <button style={styles.submitButton} disabled={!validWord} onClick={handleSubmitWord}>
           Submit Word
         </button>
         <p>Current Word: {currentWord}</p>
 
         <h4>Total Score: {calculateTotalScore()}</h4>
       </div>
-      <div className="buttons-container">
-        <button className="game-buttons" onClick={resetGame}>
+      <div style={styles.buttonsContainer}>
+        <button style={styles.gamesButton} onClick={resetGame}>
           Reset Game
         </button>
-        <button className="game-buttons" onClick={handleReset}>
+        <button style={styles.gamesButton} onClick={handleReset}>
           Reset
         </button>
-        <button className="game-buttons" onClick={handleShuffle}>
+        <button style={styles.gamesButton} onClick={handleShuffle}>
           Shuffle
         </button>
         {!isActive && (
-          <button className="game-buttons" onClick={startGame}>
+          <button style={styles.gamesButton} onClick={startGame}>
             Start Game
           </button>
         )}
       </div>
 
       <p>Score: {score}</p>
-      <div className="word-list">
+      <div style={styles.wordList}>
         <h3>Submitted Words</h3>
         <ul>
           {wordList.map((wordItem, index) => (
