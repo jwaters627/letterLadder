@@ -20,16 +20,18 @@ export const styles = {
   },
 
   buttonsContainer: {
-    display: 'flex'
+    display: 'flex',
+    marginTop: '12px'
   },
   gameButtons: {
     marginLeft: '4px',
     marginRight: '4px',
     backgroundColor: 'lightblue',
     color: 'slategray',
-    padding: '8px',
+    padding: '12px',
     border: 'none',
-    borderRadius: '4px'
+    borderRadius: '4px',
+    cursor: 'pointer'
   },
   timer: {
     position: 'absolute',
@@ -45,8 +47,23 @@ export const styles = {
   submitButton: {
     backgroundColor: 'royalblue',
     color: 'white',
-    padding: '8px 40px',
+    padding: '12px 40px',
     border: 'none',
-    borderRadius: '4px'
+    borderRadius: '4px',
+    cursor: 'pointer',
+    width: '100%'
+  },
+  disabledButton: {
+    backgroundColor: 'lightgrey',
+    color: 'grey',
+    padding: '12px 40px',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'unset',
+    width: '100%'
+  },
+  totalScoreText: {
+    margin: '0',
+    marginTop: '8px'
   }
 };

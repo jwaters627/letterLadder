@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { styles } from './styles';
-// import { StartModal } from './components/StartModal';
+import { StartModal } from './components/StartModal';
 import { isWord } from '../../Utils/words';
 
 const GRID_SIZE = 6;
@@ -22,12 +22,12 @@ export const LetterIntersection = () => {
   });
   const [isActive, setIsActive] = useState(false);
   const [bonusTime, setBonusTime] = useState(0);
-
   useEffect(() => {
     localStorage.setItem('timeLeft', timeLeft.toString());
   }, [timeLeft]);
 
   const startGame = () => {
+    resetGame();
     setIsActive(true);
     const startTime = localStorage.getItem('startTime');
     if (!startTime) {
@@ -221,9 +221,13 @@ export const LetterIntersection = () => {
         ) {
           const newSelectedCells = [...selectedCells, { row, col }];
           setSelectedCells(newSelectedCells);
-          setCurrentWord(currentWord + grid[row][col]);
-          const validWord = isWord(currentWord + grid[row][col]);
-          setValidWord(validWord);
+          const newCurrentWord = currentWord + grid[row][col];
+          setCurrentWord(newCurrentWord);
+          const validWord = isWord(newCurrentWord);
+          const newWord = !wordList.some((w) => {
+            return w.word === newCurrentWord;
+          });
+          setValidWord(validWord && newWord && newCurrentWord.length > 0);
 
           // Add a new line if there is more than one cell selected
           if (newSelectedCells.length > 1) {
@@ -324,6 +328,7 @@ export const LetterIntersection = () => {
     setLines([]);
     setScore(0);
     setIntersections([]);
+    setValidWord(false);
   };
 
   const calculateTotalScore = () => {
@@ -380,31 +385,27 @@ export const LetterIntersection = () => {
         </svg>
       </div>
       <div style={styles.wordSubmit}>
-        <button style={styles.submitButton} disabled={!validWord} onClick={handleSubmitWord}>
-          Submit Word
-        </button>
-        <p>Current Word: {currentWord}</p>
-
-        <h4>Total Score: {calculateTotalScore()}</h4>
-      </div>
-      <div style={styles.buttonsContainer}>
-        <button style={styles.gamesButton} onClick={resetGame}>
-          Reset Game
-        </button>
-        <button style={styles.gamesButton} onClick={handleReset}>
-          Reset
-        </button>
-        <button style={styles.gamesButton} onClick={handleShuffle}>
-          Shuffle
-        </button>
-        {!isActive && (
-          <button style={styles.gamesButton} onClick={startGame}>
-            Start Game
+        <div>
+          <button
+            style={!validWord ? styles.disabledButton : styles.submitButton}
+            disabled={!validWord}
+            onClick={handleSubmitWord}>
+            Submit Word
           </button>
-        )}
-      </div>
+          <div style={styles.buttonsContainer}>
+            <button style={styles.gameButtons} onClick={handleReset}>
+              Reset Word
+            </button>
+            <button style={styles.gameButtons} onClick={handleShuffle}>
+              Shuffle Sides
+            </button>
+          </div>
+        </div>
 
-      <p>Score: {score}</p>
+        <p>Current Word: {`${currentWord} ${currentWord.length > 0 ? `(${score})` : ''}`}</p>
+
+        <h4 style={styles.totalScoreText}>Total Score: {calculateTotalScore()}</h4>
+      </div>
       <div style={styles.wordList}>
         <h3>Submitted Words</h3>
         <ul>
@@ -416,7 +417,15 @@ export const LetterIntersection = () => {
         </ul>
       </div>
 
-      {/* {!isActive && <StartModal startGame={startGame} />} */}
+      {!isActive && (
+        <StartModal
+          totalScore={calculateTotalScore()}
+          words={wordList}
+          resetGame={resetGame}
+          startGame={startGame}
+          timeLeft={timeLeft}
+        />
+      )}
     </div>
   );
 };

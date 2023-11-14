@@ -8,7 +8,7 @@ export const styles = {
     backgroundColor: `rgba(0,0,0,0.7)`
   },
   modalContainer: {
-    backgroundColor: '#002f5b',
+    backgroundColor: 'lightblue',
     width: '50%',
     height: '92vh',
     marginLeft: '25%',
@@ -18,11 +18,36 @@ export const styles = {
     overFlow: 'scroll'
   },
   mobileModalContainer: {
-    backgroundColor: '#002f5b',
+    backgroundColor: 'lightblue',
     width: '100vw',
     height: '100vh',
     position: 'absolute',
     padding: '8px',
     paddingTop: '24px'
+  },
+  actionButton: {
+    padding: '8px 18px',
+    backgroundColor: 'royalblue',
+    color: '#fff',
+    fontSize: '18px',
+    cursor: 'pointer',
+    border: 'none',
+    borderRadius: '8px'
+  },
+  wordsHeadingText: {
+    fontSize: '18px',
+    margin: '6px',
+    marginBottom: '12px',
+    textDecoration: 'underline'
+  },
+  words: {
+    margin: '6px'
+  },
+  totalText: {
+    fontSize: '24px'
+  },
+  rulesText: {
+    fontSize: '24px',
+    marginBottom: 0
   }
 };
